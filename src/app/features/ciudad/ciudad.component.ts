@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-ciudad',
   standalone: true,
@@ -8,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './ciudad.component.css'
 })
 export class CiudadComponent {
-
 }
+
