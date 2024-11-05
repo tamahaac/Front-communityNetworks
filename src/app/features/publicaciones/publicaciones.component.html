@@ -6,16 +6,17 @@
 </div>
 
 <!-- Contenedor de las tarjetas de publicaciones -->
-<div class="container py-5" style="max-width: 1050px;">
+<div class="container py-5 " style="max-width: 1050px;">
   <div class="row g-4">
-    
+
     <!-- Itera sobre las publicaciones con *ngFor -->
     <div *ngFor="let publicacion of publicaciones" class="col-md-6 col-lg-4">
-      <div class="card shadow-sm border-0 rounded-4 overflow-hidden h-100">
-        
+      <div class="card shadow-lg border-0 rounded-4 overflow-hidden h-100">
+
         <!-- Imagen de la publicación con sombra y efecto hover -->
         <div class="position-relative">
-          <img [src]="'http://localhost:8080/' + publicacion.images" alt="Imagen de publicación" class="card-img-top" style="height: 250px; object-fit: cover;">
+          <img [src]="'http://localhost:8080/' + publicacion.images" alt="Imagen de publicación" class="card-img-top"
+            style="height: 250px; object-fit: cover;">
           <div class="position-absolute top-0 start-0 bg-dark bg-opacity-50 text-white p-2 rounded-end">
             <small>{{ publicacion.tipoPublicacion.nombreTipo }}</small>
           </div>
@@ -25,16 +26,19 @@
         <div class="card-body p-4 d-flex flex-column">
           <h5 class="card-title text-center text-primary fw-bold">{{ publicacion.titulo.toUpperCase() }}</h5>
           <p class="card-text text-muted mb-3">{{ publicacion.descripcion | slice:0:100 }}...</p>
-          
+
           <!-- Información de fecha y autor -->
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> {{ publicacion.fechaPublicacion | date }}</small>
-            <small class="text-muted"><i class="fas fa-user me-1"></i> {{ publicacion.usuarioPublicador.nombre }}</small>
+            <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> {{ publicacion.fechaPublicacion | date
+              }}</small>
+            <small class="text-muted"><i class="fas fa-user me-1"></i> {{ publicacion.usuarioPublicador.nombre
+              }}</small>
           </div>
 
           <!-- Botón centrado de "Ver detalles" -->
           <div class="mt-auto text-center">
-            <button class="btn btn-primary px-4 py-2 rounded-pill" [routerLink]="['/publicacion', publicacion.idPublicacion]">
+            <button class="btn btn-primary px-4 py-2 rounded-pill"
+              [routerLink]="['/publicacion', publicacion.idPublicacion]">
               Ver detalles
             </button>
           </div>
@@ -45,5 +49,45 @@
 </div>
 
 
+<!-- Contenedor de las tarjetas de publicaciones -->
+<div class="container py-5" style="max-width: 1050px;">
+  <div class="row g-4">
 
+      <!-- Itera sobre las publicaciones con *ngFor -->
+      <div *ngFor="let publicacion of publicacionesByUser.publicaciones" class="col-md-6 col-lg-4">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden h-100">
 
+          <!-- Imagen de la publicación con sombra y efecto hover -->
+          <div class="position-relative">
+            <img [src]="'http://localhost:8080/' + publicacion.images" alt="Imagen de publicación" class="card-img-top"
+              style="height: 250px; object-fit: cover;">
+            <div class="position-absolute top-0 start-0 bg-dark bg-opacity-50 text-white p-2 rounded-end">
+              <small>{{ publicacion.tipoPublicacion.nombreTipo }}</small>
+            </div>
+          </div>
+
+          <!-- Cuerpo de la tarjeta -->
+          <div class="card-body p-4 d-flex flex-column">
+            <h5 class="card-title text-center text-primary fw-bold">{{ publicacion.titulo.toUpperCase() }}</h5>
+            <p class="card-text text-muted mb-3">{{ publicacion.descripcion | slice:0:100 }}...</p>
+
+            <!-- Información de fecha y autor -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> {{ publicacion.fechaPublicacion | date
+                }}</small>
+              <small class="text-muted"><i class="fas fa-user me-1"></i> {{ publicacionesByUser.nombre}}</small>
+            </div>
+
+            <!-- Botón centrado de "Ver detalles" -->
+            <div class="mt-auto text-center">
+              <button class="btn btn-primary px-4 py-2 rounded-pill"
+                [routerLink]="['/publicacion', publicacion.idPublicacion]">
+                Ver detalles
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>

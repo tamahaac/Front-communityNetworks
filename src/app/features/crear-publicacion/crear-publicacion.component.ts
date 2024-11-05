@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PublicacionService } from '../../core/services/publicacion.service';
 import { CrearPublicacionService } from '../../core/services/crearPublicacion.service';
-import { authService } from '../../core/services/auth.service';
-
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 interface PublicacionFormControls {
   titulo: any;
   descripcion: any;
@@ -40,12 +40,13 @@ export class CrearPublicacionComponent implements OnInit {
   departamentos: any[] = [];
   ciudades: { idCiudad: number; nombre: string }[] = [];
   idUsuarioPublicador: string | null = null;
-
+  publicacionCreated: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private publicacionService: PublicacionService,
     private crearPublicacionService: CrearPublicacionService,
-    private authService: authService
+    private authService: AuthService,
+    private route : Router
     
   ) {
     this.publicacionForm = this.formBuilder.group({
@@ -123,8 +124,10 @@ export class CrearPublicacionComponent implements OnInit {
     }
   
     this.publicacionService.createPublicacion(formData).subscribe(
-      response => console.log('Publicación creada:', response),
-      error => console.error('Error al crear la publicación:', error)
+      {
+        next: ()=> this.route.navigate(['/publicaciones']),
+        error :(err: any) => console.error('Error al crear la publicacion', err)
+      }
     );
   }
   

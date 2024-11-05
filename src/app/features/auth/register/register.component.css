@@ -16,11 +16,17 @@
   }
   
   .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #03038d;
+    border-color: none;
+    border-radius: 30px;
   }
   
   .btn-primary:hover {
     background-color: #0056b3;
     border-color: #004085;
+  }
+
+  .text-crearCuenta{
+    color: #03038d;
+    text-align: center;
   }

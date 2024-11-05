@@ -1,30 +1,111 @@
-<div class="d-flex">
-    <!-- Sidebar Izquierdo -->
-    <div class="sidebar p-4 ">
-      <h4 class="mb-4">Filtros</h4>
-      <form >
-        <div class="mb-3">
-          <label for="fecha" class="form-label">Fecha</label>
-          <input type="date" class="form-control" id="fecha"  name="fecha">
-        </div>
-        <div class="mb-3">
-          <label for="ciudad" class="form-label">Ciudad</label>
-          <input type="text" class="form-control" id="ciudad"  name="ciudad">
-        </div>
-        <div class="mb-3">
-          <label for="tipo" class="form-label">Tipo de Publicación</label>
-          <select class="form-select" id="tipo"  name="tipo">
-            <option value="evento">Evento</option>
-            <option value="anuncio">Anuncio</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary w-100 mt-3">Filtrar</button>
-      </form>
-    </div>
-  
-    <!-- Contenido Principal -->
-    <div class="content flex-grow-1 p-4">
+<div class="d-flex" style="min-height: 100vh;">
+  <!-- Sidebar Izquierdo -->
+  <div class="sidebar p-4 " style="width: 250px;">
+    <h4 class="mb-4">Filtros</h4>
+    <form (submit)="onFilter($event)">
+      <!-- Filtro de Fecha -->
+      <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="fecha" [(ngModel)]="filters.fecha" name="fecha">
+      </div>
 
-    </div>
+      <!-- Filtro de ciduades  -->
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Selecciona una Ciudad</label>
+        <select class="form-select" id="tipo" [(ngModel)]="filters.ciudad" name="ciudad">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="1">Leticia</option>
+          <option value="2">Medellín</option>
+          <option value="3">Arauca</option>
+          <option value="4">Barranquilla</option>
+          <option value="5">Cartagena</option>
+          <option value="6">Tunja</option>
+          <option value="7">Manizales</option>
+          <option value="8">Florencia</option>
+          <option value="9">Yopal</option>
+          <option value="10">Popayán</option>
+          <option value="11">Valledupar</option>
+          <option value="12">Quibdó</option>
+          <option value="13">Montería</option>
+          <option value="14">Bogotá</option>
+          <option value="15">Inírida</option>
+          <option value="16">San José del Guaviare</option>
+          <option value="17">Neiva</option>
+          <option value="18">Riohacha</option>
+          <option value="19">Santa Marta</option>
+          <option value="20">Villavicencio</option>
+          <option value="21">Pasto</option>
+          <option value="22">Cúcuta</option>
+          <option value="23">Mocoa</option>
+          <option value="24">Armenia</option>
+          <option value="25">Pereira</option>
+          <option value="26">San Andrés</option>
+          <option value="27">Bucaramanga</option>
+          <option value="28">Sincelejo</option>
+          <option value="29">Ibagué</option>
+          <option value="30">Cali</option>
+          <option value="31">Mitú</option>
+          <option value="32">Puerto Carreño</option>
+          <option value="33">Puerto Nariño</option>
+          <option value="34">Rionegro</option>
+          <option value="35">Apartadó</option>
+          <option value="36">Itagüí</option>
+          <option value="37">Bello</option>
+          <option value="38">Envigado</option>
+          <option value="39">Turbo</option>
+          <option value="40">Sabaneta</option>
+          <option value="41">Copacabana</option>
+          <option value="42">El Bagre</option>
+          <option value="43">Arauquita</option>
+          <option value="44">Saravena</option>
+          <option value="45">Cravo Norte</option>
+          <option value="46">Tame</option>
+          <option value="47">Puerto Rondón</option>
+          <option value="48">Fortul</option>
+          <option value="49">La Esmeralda</option>
+          <option value="50">Caracol</option>
+          <option value="51">Corocito</option>
+          <option value="52">Barrancominas</option>
+          <option value="53">El Encanto</option>
+          <option value="54">La Chorrera</option>
+          <option value="55">La Pedrera</option>
+          <option value="56">Mirití-Paraná</option>
+          <option value="57">Puerto Arica</option>
+          <option value="58">Puerto Santander</option>
+          <option value="59">Tarapacá</option>
+          <option value="60">Sabanalarga</option>
+          <option value="61">Soledad</option>
+          <option value="62">Malambo</option>
+          <option value="63">Galapa</option>
+          <option value="64">Santo Tomás</option>
+          <option value="65">Palmar de Varela</option>
+          <option value="66">Baranoa</option>
+          <option value="67">Polonuevo</option>
+          <option value="68">Ponedera</option>
+          <option value="69">Repelón</option>
+        </select>
+      </div>
+
+      <!-- Filtro de Tipo de Publicación -->
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo de Publicación</label>
+        <select class="form-select" id="tipo" [(ngModel)]="filters.tipo" name="tipo">
+          <option value="" disabled selected>Selecciona un tipo</option>
+          <option value="1">Servicios</option>
+          <option value="4">Anuncio</option>
+          <option value="5">Tecnología</option>
+          <option value="6">Eventos</option>
+          <option value="7">Educación y cursos</option>
+          <option value="8">Deportes y recreación</option>
+          <option value="9">Mascotas</option>
+          <option value="10">Transporte</option>
+          <option value="11">Noticias comunitaris</option>
+          <option value="12">Ofertas y promociones</option>
+        </select>
+      </div>
+
+      <!-- Botón de Filtrar -->
+      <button type="submit" class="btn btn-primary w-100 mt-3">Filtrar</button>
+    </form>
   </div>
-  
+</div>

@@ -1,16 +1,16 @@
 import { inject } from '@angular/core';
 import { HttpInterceptorFn } from '@angular/common/http';
-import { authService } from './services/auth.service';
+import { AuthService } from './services/auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
-    const authServiceInstance = inject(authService); // Inyectamos el servicio de autenticación
+    const authServiceInstance = inject(AuthService); // Inyectamos el servicio de autenticación
     const token = authServiceInstance.getToken();
     
     // Excluir el endpoint de login para que no se agregue el token
     const isLoginRequest = req.url.includes('/auth/login');
     if (isLoginRequest) {
-        return next(req); // Continuar sin modificar la solicitud
+        return next(req);
     }
 
     if (token) {

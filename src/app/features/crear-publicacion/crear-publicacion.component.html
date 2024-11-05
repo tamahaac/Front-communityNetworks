@@ -26,10 +26,16 @@
         <label for="idTipoPublicacion" class="form-label">Tipo de Publicación</label>
         <select formControlName="idTipoPublicacion" class="form-select" id="idTipoPublicacion">
           <option value="">Seleccione un tipo de publicación</option>
-          <!-- Reemplaza estos con los valores reales -->
-          <option value="1">Noticia</option>
-          <option value="2">Evento</option>
-          <option value="3">Anuncio</option>
+          <option value="1">Servicios</option>
+          <option value="4">Anuncio</option>
+          <option value="5">Tecnología</option>
+          <option value="6">Eventos</option>
+          <option value="7">Educación y cursos</option>
+          <option value="8">Deportes y recreación</option>
+          <option value="9">Mascotas</option>
+          <option value="10">Transporte</option>
+          <option value="11">Noticias comunitarias</option>
+          <option value="12">Ofertas y Promociones</option>
         </select>
         <div *ngIf="submitted && f.idTipoPublicacion.errors" class="invalid-feedback">
           El tipo de publicación es obligatorio.
@@ -81,4 +87,6 @@
       <button type="submit" class="btn btn-primary w-100" >Crear Publicación</button>
     </form>
   </div>
+
+
   

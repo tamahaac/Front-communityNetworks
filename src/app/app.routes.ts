@@ -6,13 +6,16 @@ import { RegisterComponent } from '../app/features/auth/register/register.compon
 import { authGuard } from './guards/auth.guard';
 import { DetallePublicacionComponent } from '../app/features/detallePublicacion/detalle-publicacion.component';
 import { CrearPublicacionComponent } from './features/crear-publicacion/crear-publicacion.component';
+import { ResultadosBusquedaComponent } from './features/resultados-busqueda/resultados-busqueda.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/publicaciones', pathMatch: 'full'},
     { path:'login', component: LoginComponent},
     { path:'register', component:RegisterComponent},
     { path:'publicaciones', component: PublicacionesComponent},
+    { path:'mis-publicaciones', component: PublicacionesComponent },
     { path:'usuarioProfile', component: UsuarioComponent, canActivate: [authGuard]},
     { path: 'publicacion/:id', component: DetallePublicacionComponent },
     { path: 'crearPublicacion', component: CrearPublicacionComponent },
+    { path: 'resultados', component: ResultadosBusquedaComponent }
 ];

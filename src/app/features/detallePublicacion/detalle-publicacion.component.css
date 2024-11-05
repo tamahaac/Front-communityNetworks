@@ -20,11 +20,11 @@
   
   .card-hover:hover {
     transform: translateY(-5px); /* Eleva ligeramente la tarjeta */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Sombra más pronunciada */
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2); /* Sombra más pronunciada */
     border-radius: 30px;
   }
   
   .container-details{
     max-width: 1000px; 
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255);
   }

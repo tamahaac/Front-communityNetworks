@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { authService } from '../../core/services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
+import { PublicacionesComponent } from '../../features/publicaciones/publicaciones.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule,FormsModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   isAuthenticated: boolean = false;
+  idUsuario: string | null = null;
+  searchQuery: string|null = null;
 
-  constructor(public authService: authService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAutenthicated(); // Comprueba el estado de autenticación una vez
@@ -25,10 +29,21 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  // En el componente de la barra de navegación
-isAuthRoute(): boolean {
-  const authRoutes = ['/login', '/register'];
-  return authRoutes.includes(this.router.url);
-}
+  isAuthRoute(): boolean {
+    const authRoutes = ['/login', '/register'];
+    return authRoutes.includes(this.router.url);
+  }
 
+  showMyPost= (): void => {
+    this.idUsuario = this.authService.getUserIdFromToken();
+    this.router.navigate(['/mis-publicaciones'], { queryParams: { userId: this.idUsuario } });
+  }
+
+  onSearch(event: Event): void {
+    event.preventDefault();
+    if (this.searchQuery) {
+      this.router.navigate(['/resultados'], { queryParams: { query: this.searchQuery } });
+    }
+  }
+  
 }

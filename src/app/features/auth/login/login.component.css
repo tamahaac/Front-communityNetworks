@@ -1,0 +1,51 @@
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.00);
+  }
+
+  .login-img {
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .btn-custom {
+    color: white;
+    transition: all 0.3s ease;
+    background:  #03038d;
+    border-radius: 30px;
+  }
+
+  .btn-custom:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .form-control {
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-outline label {
+    font-weight: bold;
+  }
+
+  .form-check-input {
+    margin-top: 0.2rem;
+  }
+
+  @media (max-width: 991px) {
+    .login-img {
+      border-radius: 20px 20px 0 0;
+      height: 250px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .login-img {
+      height: 100%;
+      border-radius: 20px 0 0 20px;
+    }
+  }

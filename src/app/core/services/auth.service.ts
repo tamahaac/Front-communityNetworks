@@ -55,7 +55,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  public getUserIdFromToken(){
+  public getUserIdFromToken(): string | null{
     const token = this.getToken();
     if (!token){
       return null;
