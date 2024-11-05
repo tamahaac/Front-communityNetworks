@@ -1,0 +1,13 @@
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-link{
+    color: white;
+  }
+
+  .text {
+    background: linear-gradient(45deg, #f0b207, #2121f5); /* De rojo a azul */
+    -webkit-background-clip: text;
+    color: transparent;
+}

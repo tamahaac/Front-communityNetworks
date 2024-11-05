@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="!isAuthRoute()">
+    <app-navbar></app-navbar>
+  </ng-container>
+  
+  <div class="d-flex">
+    <!-- Sidebar a la izquierda -->
+    <ng-container *ngIf="!isAuthRoute()">
+      <app-sidebar></app-sidebar>
+    </ng-container>
+  
+    <!-- Contenido principal con desplazamiento cuando excede la altura -->
+    <div class="main-content flex-grow-1 p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

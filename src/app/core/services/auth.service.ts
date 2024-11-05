@@ -30,16 +30,16 @@ export class authService {
     )
   }
 
-  private setToken(token: string): void {
+  public setToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
 
 
-  private getToken(): string | null{
+  public getToken(): string | null{
   return localStorage.getItem(this.tokenKey);
   }
 
-  isAutenthicated(): boolean {
+  public isAutenthicated(): boolean {
     const token = this.getToken();
     if (!token){
       return false;
@@ -50,8 +50,17 @@ export class authService {
     return Date.now() < exp
   }
 
-  logout(): void{
+  public logout(): void{
     localStorage.removeItem(this.tokenKey);
     this.router.navigate(['/login']);
+  }
+
+  public getUserIdFromToken(){
+    const token = this.getToken();
+    if (!token){
+      return null;
+    }
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.idUser;
   }
 }

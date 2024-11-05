@@ -1,0 +1,15 @@
+/* styles.css */
+
+
+  /* Gradiente de fondo para toda la aplicación */
+  body {
+    background: linear-gradient(to bottom, #1b1b9b, #b9babb); 
+    color: white; 
+    min-height: 100vh; 
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  

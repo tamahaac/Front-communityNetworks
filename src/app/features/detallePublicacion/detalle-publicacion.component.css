@@ -1,0 +1,30 @@
+/* Efecto de hover en los íconos */
+.icon-hover {
+    transition: transform 0.3s ease, color 0.3s ease; /* Transición suave */
+  }
+
+.title-details {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+  .icon-hover:hover {
+    transform: scale(2); /* Aumenta el tamaño */
+    color: #3498db; /* Cambia de color al pasar el mouse */
+  }
+  
+  /* Efecto de hover en las secciones */
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-5px); /* Eleva ligeramente la tarjeta */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Sombra más pronunciada */
+    border-radius: 30px;
+  }
+  
+  .container-details{
+    max-width: 1000px; 
+    background-color: rgba(0, 0, 0, 0.3);
+  }

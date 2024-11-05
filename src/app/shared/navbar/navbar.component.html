@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+    <div class="container">
+      <!-- Logo y Título -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.png" alt="Logo" style="width: 90px; height: 70px;">
+        <span class="ms-2 fw-bold fs-4 text ">UNIENDO COMUNIDADES</span>
+      </a>
+      
+      <!-- Botón para dispositivos pequeños -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Enlaces de Navegación -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav">
+          <ng-container *ngIf="isAuthenticated">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" [routerLink]="['/publicaciones']">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/mis-publicaciones']">Mis Publicaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/crearPublicacion']">Crear Publicación</a>
+            </li>
+          </ng-container>
+        </ul>
+  
+        <!-- Barra de Búsqueda -->
+        <form class="d-flex mx-auto" style="max-width: 300px;">
+          <input class="form-control me-2 rounded-pill" type="search" placeholder="Buscar publicaciones..." aria-label="Search">
+          <button class="btn btn-primary rounded-pill" type="submit">Buscar</button>
+        </form>
+  
+        <!-- Enlace de Iniciar Sesión / Perfil de Usuario -->
+        <ul class="navbar-nav">
+
+          <!-- Mostrar opciones según el estado de autenticación -->
+          <ng-container *ngIf="!isAuthenticated; else loggedIn">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/register']">Crear Cuenta</a>
+            </li>
+          </ng-container>
+          <ng-template #loggedIn>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle fs-4 me-1"></i> <!-- Icono de perfil -->
+                Mi Cuenta
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" [routerLink]="['/profile']">Perfil</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/login']" (click)="authService.logout()">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+  </nav>

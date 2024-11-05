@@ -1,0 +1,77 @@
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center" style="height: 800px;">
+    <div class="spinner-border " role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+  
+<div class="d-flex justify-content-center my-5">
+    <div *ngIf="publicacion" class="container p-4 shadow-lg rounded-4 card-hover container-details">
+        
+        <!-- Tipo de Publicación -->
+        <div class="mb-4 p-3 d-flex justify-content-between card-hover" style="border-radius: 15px;">
+
+            <div style="width: 60px;"></div>
+            
+            <div>
+                <h2 class="text-white text-center mb-4 title-details">{{ publicacion.titulo }}</h2>
+            </div>
+
+            <div>
+                <h6 class="text-white">
+                    <i class="fas fa-tags text-info icon-hover"></i> 
+                    <strong>Tipo de Publicación:</strong>
+                </h6>
+                <p class="text-white">{{ publicacion.tipoPublicacion.nombreTipo }}</p>
+            </div>
+
+        </div>
+
+        <div class="mb-4 p-3 card-hover" style="background-color: #3d74eb; border-radius: 15px;">
+            <div class="d-flex justify-content-between">
+                <p>
+                    <i class="fas fa-calendar-alt p-1 icon-hover"></i> 
+                    <strong>Publicado el:</strong> {{ publicacion.fechaPublicacion | date }}
+                </p>
+                <p>
+                    <i class="fas fa-clock p-1 icon-hover"></i> 
+                    <strong>Fecha de Inicio:</strong> {{ publicacion.fechaInicio | date }}
+                </p>
+                <p>
+                    <i class="fas fa-clock p-1 icon-hover"></i> 
+                    <strong>Fecha de Fin:</strong> {{ publicacion.fechaFin | date }}
+                </p>
+            </div>
+        </div>
+
+        <div class="text-center mb-4 card-hover">
+            <img [src]="'http://localhost:8080/' + publicacion.images" alt="Imagen de publicación"
+                class="img-fluid rounded" style="max-height: 400px; object-fit: cover; border-radius: 15px;">
+        </div>
+
+        <!-- Datos del Publicador -->
+        <div class="mb-4 p-3 card-hover" style="background-color: #1c1d1d; border-radius: 15px;">
+            <h5>
+                <i class="fas fa-user text-warning p-1 icon-hover"></i> 
+                <strong>Publicado por:</strong>
+            </h5>
+            <p><strong>Nombre:</strong> {{ publicacion.usuarioPublicador.nombre }} {{ publicacion.usuarioPublicador.apellido }}</p>
+            <p><strong>Correo:</strong> {{ publicacion.usuarioPublicador.correo }}</p>
+            <p><strong>Teléfono:</strong> {{ publicacion.usuarioPublicador.telefono }}</p>
+        </div>
+
+        <!-- Descripción -->
+        <div class="mb-4 p-3 card-hover" style="background-color: #3d74eb; border-radius: 15px;">
+            <p class="mb-2">{{ publicacion.descripcion }}</p>
+        </div>
+
+        <!-- Ubicación (Ciudad) -->
+        <div class="mb-4 p-3 card-hover" style="background-color: #020202; border-radius: 15px;">
+            <h5>
+                <i class="fas fa-map-marker-alt text-success p-1 icon-hover"></i> 
+                <strong>Ubicación: </strong>
+            </h5>
+            <p> Ciudad: {{ publicacion.ciudad.nombre }}</p>
+        </div>
+
+    </div>
+</div>

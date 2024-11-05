@@ -1,0 +1,16 @@
+/* Estilo del sidebar */
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente en el sidebar */
+    color: rgb(255, 252, 252); /* Texto blanco para contraste */
+    width: 300px; 
+    height: 100vh; 
+    position: sticky; 
+    top: 0; 
+    padding: 1rem;
+  }
+  
+  
+  .content {
+    flex-grow: 1;
+  }
+  

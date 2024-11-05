@@ -1,0 +1,84 @@
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="text-center">Crear Publicación</h2>
+    <form [formGroup]="publicacionForm" (ngSubmit)="onSubmit()">
+  
+      <!-- Título -->
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" formControlName="titulo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" id="titulo">
+        <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">El título es obligatorio.</div>
+      </div>
+  
+      <!-- Descripción -->
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea formControlName="descripcion" class="form-control" rows="4" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" id="descripcion"></textarea>
+        <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">La descripción debe tener al menos 20 caracteres.</div>
+      </div>
+
+      <div>
+        <label for="direccion" class="form-label">Direccion</label>
+        <input type="text" formControlName="direccion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }" id="direccion">
+        <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">La direccion es obligatoria.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="idTipoPublicacion" class="form-label">Tipo de Publicación</label>
+        <select formControlName="idTipoPublicacion" class="form-select" id="idTipoPublicacion">
+          <option value="">Seleccione un tipo de publicación</option>
+          <!-- Reemplaza estos con los valores reales -->
+          <option value="1">Noticia</option>
+          <option value="2">Evento</option>
+          <option value="3">Anuncio</option>
+        </select>
+        <div *ngIf="submitted && f.idTipoPublicacion.errors" class="invalid-feedback">
+          El tipo de publicación es obligatorio.
+        </div>
+      </div>
+      
+      <div>
+        <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+        <input type="date" formControlName="fechaInicio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechaInicio.errors }" id="direccion">
+        <div *ngIf="submitted && f.fechaInicio.errors" class="invalid-feedback">La fecha inicial es obligatoria.</div>
+      </div>
+
+      <div>
+        <label for="fechaFin" class="form-label">Fecha Fin</label>
+        <input type="date" formControlName="fechaFin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechaFin.errors }" id="direccion">
+        <div *ngIf="submitted && f.fechaFin.errors" class="invalid-feedback">La fecha final es obligatoria.</div>
+      </div>
+
+      <div>
+        <label for="images" class="form-label">Anexar imagen</label>
+        <input type="file"  class="form-control" id="images" (change)="onFileSelect($event)" [ngClass]="{ 'is-invalid': submitted && f.images.errors }">
+        <div *ngIf="submitted && f.images.errors" class="invalid-feedback">La imagen es obligatoria</div>
+      </div>
+
+      <!-- Departamento -->
+      <div class="mb-3">
+        <label for="idDepartamento" class="form-label">Departamento</label>
+        <select formControlName="idDepartamento" class="form-select " (change)="onDepartamentoChange()" [ngClass]="{ 'is-invalid': submitted && f.idDepartamento.errors }" id="idDepartamento">
+          <option value="">Seleccione un departamento</option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.idDepartamento">{{ departamento.nombreDepartamento }}</option>
+        </select>
+        <div *ngIf="submitted && f.idDepartamento.errors" class="invalid-feedback ">Seleccione un departamento.</div>
+      </div>
+      
+      <!-- Ciudad (se carga según el departamento) -->
+      <div class="mb-3">
+        <label for="idCiudad" class="form-label">Ciudad</label>
+        <select formControlName="idCiudad" class="form-select" [ngClass]="{ 'is-invalid': submitted && f.idCiudad.errors }" id="idCiudad" [disabled]="!ciudades.length">
+          <option value="">Seleccione una ciudad</option>
+          <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ ciudad.nombre }}</option>
+        </select>
+        <div *ngIf="submitted && f.idCiudad.errors" class="invalid-feedback">Seleccione una ciudad.</div>
+      </div>
+
+      
+  
+      <!-- Otros campos... -->
+  
+      <button type="submit" class="btn btn-primary w-100" >Crear Publicación</button>
+    </form>
+  </div>
+  

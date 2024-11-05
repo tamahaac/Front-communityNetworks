@@ -1,21 +1,49 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Community networks</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
-      <div class="d-flex justify-content-between">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+<!-- Spinner de carga mientras los datos se cargan -->
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center" style="height: 800px;">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+</div>
 
-        <div>
-          <button style="background-color: transparent; border: 0;">Crear cuenta</button>
-          <button style="background-color: transparent; border: 0;">Iniciar sesion</button>
+<!-- Contenedor de las tarjetas de publicaciones -->
+<div class="container py-5" style="max-width: 1050px;">
+  <div class="row g-4">
+    
+    <!-- Itera sobre las publicaciones con *ngFor -->
+    <div *ngFor="let publicacion of publicaciones" class="col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 rounded-4 overflow-hidden h-100">
+        
+        <!-- Imagen de la publicación con sombra y efecto hover -->
+        <div class="position-relative">
+          <img [src]="'http://localhost:8080/' + publicacion.images" alt="Imagen de publicación" class="card-img-top" style="height: 250px; object-fit: cover;">
+          <div class="position-absolute top-0 start-0 bg-dark bg-opacity-50 text-white p-2 rounded-end">
+            <small>{{ publicacion.tipoPublicacion.nombreTipo }}</small>
+          </div>
+        </div>
+
+        <!-- Cuerpo de la tarjeta -->
+        <div class="card-body p-4 d-flex flex-column">
+          <h5 class="card-title text-center text-primary fw-bold">{{ publicacion.titulo.toUpperCase() }}</h5>
+          <p class="card-text text-muted mb-3">{{ publicacion.descripcion | slice:0:100 }}...</p>
+          
+          <!-- Información de fecha y autor -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <small class="text-muted"><i class="fas fa-calendar-alt me-1"></i> {{ publicacion.fechaPublicacion | date }}</small>
+            <small class="text-muted"><i class="fas fa-user me-1"></i> {{ publicacion.usuarioPublicador.nombre }}</small>
+          </div>
+
+          <!-- Botón centrado de "Ver detalles" -->
+          <div class="mt-auto text-center">
+            <button class="btn btn-primary px-4 py-2 rounded-pill" [routerLink]="['/publicacion', publicacion.idPublicacion]">
+              Ver detalles
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</nav>
+</div>
+
+
+
+

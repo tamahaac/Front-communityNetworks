@@ -1,0 +1,4 @@
+.main-content {
+  height: 100vh; /* Ocupa toda la altura del viewport */
+  overflow-y: auto; /* Activa el desplazamiento vertical cuando el contenido es largo */
+}
