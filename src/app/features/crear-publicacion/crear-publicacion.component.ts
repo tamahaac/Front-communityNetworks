@@ -125,8 +125,7 @@ export class CrearPublicacionComponent implements OnInit {
   
     this.publicacionService.createPublicacion(formData).subscribe(
       {
-        next: ()=> this.route.navigate(['/publicaciones']),
-        error :(err: any) => console.error('Error al crear la publicacion', err)
+        next: ()=> this.route.navigate(['/publicaciones'])
       }
     );
   }
